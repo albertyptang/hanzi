@@ -1,0 +1,22 @@
+{
+  "name": "2015-05-solo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/albertyptang/2015-05-solo",
+  "authors": [
+    "aytang <albertyptang@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handjs": "*",
+    "myscript": "~1.0.14",
+    "bootstrap": "~3.3.4",
+    "jquery": "~2.1.4"
+  }
+}

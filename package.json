@@ -1,0 +1,22 @@
+{
+  "name": "2015-05-solo",
+  "version": "1.0.0",
+  "description": "MVP",
+  "main": "mvp.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertyptang/2015-05-solo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertyptang/2015-05-solo/issues"
+  },
+  "homepage": "https://github.com/albertyptang/2015-05-solo#readme"
+}

@@ -1,0 +1,67 @@
+body {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-family: arial, sans-serif;
+}
+
+a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+h1 {
+  margin-bottom: 10px;
+  display:inline
+}
+
+.top {
+  width:400px;
+  position:relative
+}
+
+.buttons {
+  position:absolute;
+  bottom:0;
+  right:0
+}
+
+.icon {
+  opacity: .4;
+}
+
+iframe {
+  border-width: 5px;
+  border-style: solid;
+  border-color: lavender
+}
+.navigation {
+  width: 400px;
+  height: 40px;
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation li {
+  float: left;
+}
+
+.navigation li a {
+  width: 113px;
+  height: 20px;
+  line-height: 20px;
+  padding: 10px;
+  display: block;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+.navigation li a:hover {
+  background-color: lavender;
+}
+

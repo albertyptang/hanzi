@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app='shortly'>
+  <head>
+    <meta charset="utf-8" />
+    <title>Shortly</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <h1>Shortly</h1>
+
+    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+    <div class='navigation'>
+      <ul>
+        <li class='nav' ui-sref-active="active"><a ui-sref='shorten'>Shorten</a></li>
+        <li class='nav' ui-sref-active="active"><a ui-sref='links'>Links</a></li>
+        <li class='nav'ui-sref-active="active"><a ui-sref='signin'>Sign In</a></li>
+      </ul>
+    </div>
+    <div ui-view></div>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+
+    <script src="app/auth/auth.js"></script>
+    <script src="app/links/links.js"></script>
+    <script src="app/shorten/shorten.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+</html>
