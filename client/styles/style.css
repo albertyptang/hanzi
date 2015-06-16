@@ -30,6 +30,22 @@ h1 {
   opacity: .4;
 }
 
+.active {
+  opacity: 1;
+}
+
+.history {
+  width: 390px;
+  height: 244px;
+  border: 5px solid lavender
+}
+
+.past {
+  font-size: 40px;
+  font-weight: bold;
+  color: gray
+}
+
 iframe {
   border-width: 5px;
   border-style: solid;

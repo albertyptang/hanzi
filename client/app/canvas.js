@@ -41,7 +41,7 @@
                 //             } else if (instanceId !== data.getInstanceId()) {
                 //                 return;
                 //             }
-                //             // preview.innerHTML = ': '+data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
+                //             // preview.innerHTML = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
                 //         }
                 // );
             }
