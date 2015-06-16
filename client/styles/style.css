@@ -15,9 +15,15 @@ h1 {
   display:inline
 }
 
+#preview {
+  color: gray
+}
+
 .top {
   width:400px;
-  position:relative
+  height: 40px;
+  position:relative;
+  margin-bottom: 10px
 }
 
 .buttons {

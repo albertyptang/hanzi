@@ -30,7 +30,8 @@
             if (inkManager.isEmpty()) {
                 preview.innerHTML = '';
             } else {
-                preview.innerHTML = '向';
+                preview.innerHTML = '-';
+
                 // var inputUnit = new MyScript.TextInputUnit();
                 // inputUnit.setComponents(inkManager.getStrokes());
                 // var units = [inputUnit];
@@ -41,7 +42,7 @@
                 //             } else if (instanceId !== data.getInstanceId()) {
                 //                 return;
                 //             }
-                //             // preview.innerHTML = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
+                //             preview.innerHTML = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
                 //         }
                 // );
             }
