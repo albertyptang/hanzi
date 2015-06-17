@@ -30,7 +30,7 @@
             if (inkManager.isEmpty()) {
                 preview.innerHTML = '';
             } else {
-                preview.innerHTML = '-';
+                preview.innerHTML = '月';
 
                 // var inputUnit = new MyScript.TextInputUnit();
                 // inputUnit.setComponents(inkManager.getStrokes());

@@ -3,29 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <title>Hanzi by ayptang</title>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="styles/style.css">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
-
-  <!-- CryptoJS imports -->
-  <script type="text/javascript" src="bower_components/cryptojslib/components/core-min.js"></script>
-  <script type="text/javascript" src="bower_components/cryptojslib/components/x64-core-min.js"></script>
-  <script type="text/javascript" src="bower_components/cryptojslib/components/sha512-min.js"></script>
-  <script type="text/javascript" src="bower_components/cryptojslib/components/hmac-min.js"></script>
-  <!-- Q import -->
-  <script type="text/javascript" src="bower_components/q/q.js"></script>
-  <!-- HandJS import -->
-  <script type="text/javascript" src="bower_components/handjs/hand.js"></script>
-  <!-- MyScriptJS import -->
-  <script type="text/javascript" src="bower_components/myscript/dist/myscript.js"></script>
-  
-  <script src="app/zhzd.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=.7" /> 
+  <link rel="stylesheet" href="style-min.css">
+  <script src="bowerstuff.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
 </head>
 
 <body>
@@ -49,10 +30,9 @@
         <li class="nav" ng-click="add('baidu')"><a><img src="assets/baidu.png"> Baidu</a></li>
       </ul>
     </div>
-    <iframe id="frame" width="390" height="250"></iframe>
+    <iframe id="frame" width="390" height="400"></iframe>
   </div>
 </body>
-
-<!-- TextRecognition -->
-  <script type="text/javascript" src="app/canvas.js"></script>
+  <script src="app/zhzd.js"></script>
+  <script src="app/canvas.js"></script>
 </html>
