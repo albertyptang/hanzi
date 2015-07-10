@@ -8,8 +8,8 @@ var characterRecognition = function () {
   /*
    * Handle MyScript Cloud authentication keys
    */
-  var applicationKey = process.env.PARAM1;
-  var hmacKey = process.env.PARAM2;
+  var applicationKey = '36c47743-8473-4c39-b43d-4c8a2350e6a1';
+  var hmacKey = 'bbb5e44d-05f9-47e9-95e3-9436d085249b';
   /*
    * Declare an instance of MyScriptJS InkManager in order to capture digital ink
    */
