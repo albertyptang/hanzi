@@ -20,7 +20,7 @@ angular.module('zhzd', [])
       };
       else {
         var date = Date.now();
-        $scope.def = data[0];
+        $scope.def = data;
         $scope.hist[zi] = date;
         localStorage.setItem(zi, date);
       }

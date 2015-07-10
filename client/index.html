@@ -25,8 +25,10 @@
     </div>
     <div>
       <h2 class="search" ng-click="add()">Click to Look Up <span id="preview">字</span></h2>
-      <p>{{def.traditional}} {{def.pinyin}}</p>
-      <p>{{def.definition}}</p>
+      <div ng-repeat="definition in def">
+        <p>{{definition.traditional}} {{definition.pinyin}}</br>
+        {{definition.definition}}</p>
+      </div>
     </div>
   </div>
 </body>
