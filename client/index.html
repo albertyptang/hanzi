@@ -24,7 +24,7 @@
       <span class="past" ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
     </div>
     <div>
-      <h2 class="search" ng-click="add()">Click to Look Up <span id="preview">字</span></h2>
+      <h2><span class="search" ng-click="add()">Click to Look Up <span id="preview">字</span></span></h2>
       <div ng-repeat="definition in def">
         <p>{{definition.traditional}} {{definition.pinyin}}</br>
         {{definition.definition}}</p>
