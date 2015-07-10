@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="zhzd">
+
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <title>Hanzi by ayptang</title>
-  <meta name="viewport" content="width=device-width, initial-scale=.7" /> 
-  <link rel="stylesheet" href="style-min.css">
-  <script src="bowerstuff.js"></script>
-  <script src="lib/angular/angular.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=.7" />
+  <link rel="stylesheet" href="dist/style.css">
+  <script src="dist/lib.js"></script>
 </head>
 
 <body>
   <div ng-controller="zhCtrl">
     <div class="top">
-      <h1>漢字Hanzi <span id="preview">字</span></h1>
+      <h1>漢字 Hanzi</h1>
       <div class="buttons">
         <a href="#"><img ng-click="draw = true" ng-class="{active: draw}" class="icon" src="assets/draw.png" width="40"></a>
         <a href="#"><img ng-click="draw = false" ng-class="{active: !draw}" class="icon" src="assets/clock.png" width="40"></a>
@@ -21,18 +21,16 @@
     </div>
     <canvas ng-show="draw" id="canvas" width="400" height="250" style="background-color: lavender; border: none;"></canvas>
     <div class="history" ng-hide="draw">
-      <span class="past" ng-repeat="word in hist | orderBy: '-date' " ng-click="past(word.char)"> {{word.char}} </span>
+      <span class="past" ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
     </div>
-    <div class ="navigation">
-      <ul>
-        <li class="nav" ng-click="add('wiki')"><a><img src="assets/wiktionary.png"> Wiktionary</a></li>
-        <li class="nav" ng-click="add('youdao')"><a><img src="assets/youdao.png"> Youdao</a></li>
-        <li class="nav" ng-click="add('baidu')"><a><img src="assets/baidu.png"> Baidu</a></li>
-      </ul>
+    <div>
+      <h2 class="search" ng-click="add()">Click to Look Up <span id="preview">字</span></h2>
+      <p>{{def.traditional}} {{def.pinyin}}</p>
+      <p>{{def.definition}}</p>
     </div>
-    <iframe id="frame" width="390" height="400"></iframe>
   </div>
 </body>
-  <script src="app/zhzd.js"></script>
-  <script src="app/canvas.js"></script>
+<script src="app/zhzd.js"></script>
+<script src="app/canvas.js"></script>
+
 </html>

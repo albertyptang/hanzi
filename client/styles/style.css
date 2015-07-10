@@ -1,6 +1,6 @@
 body {
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-family: arial, sans-serif;
 }
 
@@ -15,15 +15,16 @@ h1 {
   display:inline
 }
 
-#preview {
-  color: gray
+h2, p {
+  margin-top: 10px;
+  margin-bottom: 10px
 }
 
 .top {
   width:400px;
   height: 40px;
   position:relative;
-  margin-bottom: 10px
+  margin-bottom: 20px
 }
 
 .buttons {
@@ -52,38 +53,7 @@ h1 {
   color: gray
 }
 
-iframe {
-  border-width: 5px;
-  border-style: solid;
-  border-color: lavender
-}
-.navigation {
-  width: 400px;
-  height: 40px;
-}
-
-.navigation ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.navigation li {
-  float: left;
-}
-
-.navigation li a {
-  width: 113px;
-  height: 20px;
-  line-height: 20px;
-  padding: 10px;
-  display: block;
-  font-weight: bold;
-  font-size: 15px;
-  text-align: center;
-}
-
-.navigation li a:hover {
-  background-color: lavender;
+.search:hover {
+  color: gray;
 }
 

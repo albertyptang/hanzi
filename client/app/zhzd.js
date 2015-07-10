@@ -1,23 +1,35 @@
 angular.module('zhzd', [])
 
-.controller('zhCtrl', function ($scope, $location) {
+.controller('zhCtrl', function ($scope, $location, $http) {
   $scope.draw = true;
   $scope.hist = {};
-  $scope.retrieve = function(){
+  $scope.def = {};
+  $scope.retrieve = function () {
     for (var i in window.localStorage) {
-      $scope.hist[i] = JSON.parse(localStorage.getItem(i));
+      $scope.hist[i] = localStorage.getItem(i);
     }
   };
-  $scope.add = function(link){
+  $scope.add = function () {
     var zi = document.getElementById('preview').innerHTML;
-    $scope.hist[zi] = {char: zi, date: Date.now()};
-    localStorage.setItem(zi, JSON.stringify($scope.hist[zi]));
-    var node = document.getElementById("frame");
-    if (link==="wiki") node.src = "https://en.wiktionary.org/w/index.php?title="+zi+"&printable=yes";
-    else if (link==="baidu") node.src = "http://dict.baidu.com/s?wd="+zi;
-    else if (link==="youdao") node.src = "http://dict.youdao.com/search?q="+zi+"&keyfrom=dict.index";
+    $http.post('/dic', {
+      zi: zi
+    }).
+    success(function (data) {
+      if (data[0] === undefined) $scope.def = {
+        definition: 'Sorry, not a valid Chinese character'
+      };
+      else {
+        var date = Date.now();
+        $scope.def = data[0];
+        $scope.hist[zi] = date;
+        localStorage.setItem(zi, date);
+      }
+    }).
+    error(function (data, status, headers, config) {
+      console.log('error: ', status);
+    });
   };
-  $scope.past = function(past){
+  $scope.past = function (past) {
     document.getElementById('preview').innerHTML = past;
   };
   $scope.retrieve();
