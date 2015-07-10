@@ -8,8 +8,8 @@ var characterRecognition = function () {
   /*
    * Handle MyScript Cloud authentication keys
    */
-  var applicationKey = Meteor.settings.applicationKey;
-  var hmacKey = Meteor.settings.hmacKey;
+  var applicationKey = process.env.PARAM1;
+  var hmacKey = process.env.PARAM2;
   /*
    * Declare an instance of MyScriptJS InkManager in order to capture digital ink
    */
