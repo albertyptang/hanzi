@@ -9,30 +9,30 @@
   <script src="dist/lib.js"></script>
 </head>
 
-<body>
-  <div ng-controller="zhCtrl">
-    <div class="top">
-      <h1>漢字 Hanzi</h1>
-      <div class="buttons">
-        <a href="#"><img ng-click="draw = true" ng-class="{active: draw}" class="icon" src="assets/draw.png" width="40"></a>
-        <a href="#"><img ng-click="draw = false" ng-class="{active: !draw}" class="icon" src="assets/clock.png" width="40"></a>
-        <a href="javascript:history.go(0)"><img class="icon" src="assets/reload.png" width="40"></a>
-      </div>
-    </div>
-    <canvas ng-show="draw" id="canvas" width="400" height="250" style="background-color: lavender; border: none;"></canvas>
-    <div class="history" ng-hide="draw">
-      <span class="past" ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
-    </div>
-    <div>
-      <h2><span class="search" ng-click="add()">Click to Look Up <span id="preview">字</span></span></h2>
-      <div ng-repeat="definition in def">
-        <p>{{definition.traditional}} {{definition.pinyin}}</br>
-        {{definition.definition}}</p>
-      </div>
+<body ng-controller="zhCtrl">
+  <div class="top">
+    <h1>漢字 Hanzi <span ng-click="add()" id="preview"></span></h1>
+    <div class="buttons" ng-mouseleave="icon()">
+      <img ng-click="add()" ng-mouseover="icon('Search')" src="assets/search.png">
+      <img ng-click="draw=1" ng-mouseover="icon('Draw')" ng-class="{active: draw}" src="assets/draw.png">
+      <img ng-click="draw=0" ng-mouseover="icon('History')" ng-class="{active: !draw}" src="assets/clock.png">
+      <a href="javascript:history.go(0)"><img ng-mouseover="icon('Clear')" src="assets/clear.png"></a>
     </div>
   </div>
+  <div>
+    <p>{{instructions}}</p>
+    <p class="iconDef">{{iconDef}}</p>
+  </div>
+  <canvas ng-show="draw" id="canvas" width="400" height="250"></canvas>
+  <div class="history" ng-hide="draw">
+    <span ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
+  </div>
+  <div ng-repeat="definition in def">
+    <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
+      {{definition.definition}}</p>
+  </div>
 </body>
-<script src="app/zhzd.js"></script>
+<script src="app/zhController.js"></script>
 <script src="app/canvas.js"></script>
 
 </html>
