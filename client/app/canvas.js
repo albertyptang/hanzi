@@ -41,7 +41,9 @@ var characterRecognition = function () {
             } else if (instanceId !== data.getInstanceId()) {
               return;
             }
-            preview.innerHTML = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
+            var prev = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
+            var c = prev.charCodeAt(0);
+            if (c > 13311 && c < 40960) preview.innerHTML = prev[0];
           }
         );
       }
