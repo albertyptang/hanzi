@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Hanzi by ayptang</title>
+  <title>Hanzi by Albert Tang</title>
   <meta name="viewport" content="width=device-width, initial-scale=.7" />
   <link rel="stylesheet" href="dist/style.css">
   <script src="dist/lib.js"></script>
@@ -24,9 +24,12 @@
     <p class="iconDef">{{iconDef}}</p>
   </div>
   <canvas ng-show="draw" id="canvas" width="400" height="250"></canvas>
-  <div class="history" ng-hide="draw">
-    <span ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
+  <div class="box" ng-hide="draw">
+    <span class="past" ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
   </div>
+  <a href="https://github.com/albertyptang">
+    <p class="author">Albert Tang</p>
+  </a>
   <div ng-repeat="definition in def">
     <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
       {{definition.definition}}</p>

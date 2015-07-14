@@ -27,7 +27,7 @@ p {
 }
 
 .iconDef {
-  width: 400px;
+  width: 395px;
   text-align: right;
 }
 
@@ -42,6 +42,10 @@ img {
   width: 40px;
 }
 
+img:hover {
+  opacity: 1;
+}
+
 .active {
   opacity: 1;
 }
@@ -52,14 +56,33 @@ canvas {
   border: none;
 }
 
-.history {
+.author {
+  position:absolute;
+  width: 395px;
+  text-align: right;
+  opacity: .5
+}
+
+.author:hover{
+  opacity: 1;
+}
+
+.past {
+  opacity: .5
+}
+
+.past:hover {
+  opacity: 1;
+}
+
+.box {
+  padding: 0 10px;
   margin-top: 10px;
-  width: 390px;
+  width: 370px;
   height: 244px;
   border: 5px solid lavender;
   font-size: 40px;
   font-weight: bold;
-  color: gray
 }
 
 .character {
