@@ -28,7 +28,7 @@
     </div>
     <canvas ng-show="draw" id="canvas" width="400" height="250"></canvas>
     <div class="box" ng-hide="draw">
-      <span class="past" ng-repeat="past in hist" ng-click="past(key)"> {{past}} </span>
+      <span class="past" ng-repeat="old in hist" ng-click="past(old)"> {{old}} </span>
     </div>
     <a href="https://github.com/albertyptang">
       <p class="author">Albert Tang</p>
