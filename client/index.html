@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="dist/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="dist/lib.js"></script>
+  <script src="app/zhController.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
     </div>
     <canvas ng-show="draw" id="canvas" width="400" height="250"></canvas>
     <div class="box" ng-hide="draw">
-      <span class="past" ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
+      <span class="past" ng-repeat="past in hist" ng-click="past(key)"> {{past}} </span>
     </div>
     <a href="https://github.com/albertyptang">
       <p class="author">Albert Tang</p>
@@ -38,7 +39,6 @@
     </div>
   </div>
 </body>
-<script src="app/zhController.js"></script>
 <script src="app/canvas.js"></script>
 
 </html>

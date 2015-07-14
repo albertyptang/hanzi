@@ -1,6 +1,6 @@
 angular.module('zhzd', [])
 
-.controller('zhCtrl', function ($scope, $location, $http) {
+.controller('zhCtrl', function ($scope, $location, $http, $timeout) {
   // state
   $scope.draw = 1;
   $scope.iconDef = '';
@@ -16,13 +16,13 @@ angular.module('zhzd', [])
     }
   };
   // history
-  $scope.hist = {};
+  $scope.hist = [];
   $scope.past = function (past) {
     document.getElementById('preview').innerHTML = past;
   };
   $scope.retrieve = function () {
-    for (var i in window.localStorage) {
-      $scope.hist[i] = localStorage.getItem(i);
+    for (var zi in window.localStorage) {
+      $scope.hist.push(zi);
     }
   };
   // definitions
@@ -33,15 +33,19 @@ angular.module('zhzd', [])
       zi: zi
     }).
     success(function (data) {
-      if (data[0] === undefined) $scope.def = [];
-      else {
-        var date = Date.now();
+      if (data[0] === undefined || localStorage.getItem(zi)) {
+        $scope.def = [];
+      } else {
         $scope.def = data;
-        $scope.hist[zi] = date;
-        localStorage.setItem(zi, date);
+        $scope.hist.push(zi);
+        var removed;
+        while ($scope.hist.length > 20) {
+          removed = $scope.hist.pop();
+          localStorage.setItem(zi, 1);
+          localStorage.removeItem(removed);
+        }
       }
-    }).
-    error(function (data, status, headers, config) {
+    }).error(function (data, status, headers, config) {
       console.log('error: ', status);
     });
   };
