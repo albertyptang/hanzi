@@ -41,9 +41,9 @@ angular.module('zhzd', [])
         var removed;
         while ($scope.hist.length > 20) {
           removed = $scope.hist.pop();
-          localStorage.setItem(zi, 1);
           localStorage.removeItem(removed);
         }
+        localStorage.setItem(zi, 1);
       }
     }).error(function (data, status, headers, config) {
       console.log('error: ', status);
