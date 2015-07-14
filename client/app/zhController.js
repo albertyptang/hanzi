@@ -4,12 +4,12 @@ angular.module('zhzd', [])
   // state
   $scope.draw = 1;
   $scope.iconDef = '';
-  $scope.instructions = 'Write a Chinese character and click the Search icon';
+  $scope.instructions = 'Write a Chinese character and click the Lookup icon';
   $scope.icon = function (state) {
     if (state === undefined) {
       $scope.iconDef = '';
-      if ($scope.draw) $scope.instructions = 'Write a Chinese character and click the Search icon';
-      else $scope.instructions = 'Click a Chinese character and click the Search icon';
+      if ($scope.draw) $scope.instructions = 'Write a Chinese character and click the Lookup icon';
+      else $scope.instructions = 'Click a Chinese character and click the Lookup icon';
     } else {
       $scope.instructions = '';
       $scope.iconDef = state;
@@ -31,9 +31,8 @@ angular.module('zhzd', [])
     var zi = document.getElementById('preview').innerHTML;
     var c = zi.charCodeAt(0);
     if (c < 13312 || c > 40959) {
-      $scope.def = [{
-        warning: 'Sorry, try writing a Chinese character!'
-      }];
+      $scope.iconDef = '';
+      $scope.instructions = 'Sorry, try writing a Chinese character';
       return;
     }
     $http.post('/dic', {

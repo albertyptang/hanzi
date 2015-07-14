@@ -16,7 +16,7 @@
     <div class="top">
       <h1>漢字 Hanzi <span ng-click="add()" id="preview"></span></h1>
       <div class="buttons" ng-mouseleave="icon()">
-        <img ng-click="add()" ng-mouseover="icon('Search')" src="assets/search.png">
+        <img ng-click="add()" ng-mouseover="icon('Lookup')" src="assets/search.png">
         <img ng-click="draw=1" ng-mouseover="icon('Draw')" ng-class="{active: draw}" src="assets/draw.png">
         <img ng-click="draw=0" ng-mouseover="icon('History')" ng-class="{active: !draw}" src="assets/clock.png">
         <a href="javascript:history.go(0)"><img ng-mouseover="icon('Clear')" src="assets/clear.png"></a>
@@ -34,7 +34,6 @@
       <p class="author">Albert Tang</p>
     </a>
     <div ng-repeat="definition in def">
-      <p>{{definition.warning}}</p>
       <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
         {{definition.definition}}</p>
     </div>
