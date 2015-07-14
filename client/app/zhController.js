@@ -33,10 +33,11 @@ angular.module('zhzd', [])
       zi: zi
     }).
     success(function (data) {
-      if (data[0] === undefined || localStorage.getItem(zi)) {
+      if (data[0] === undefined) {
         $scope.def = [];
       } else {
         $scope.def = data;
+        if (localStorage.getItem(zi)) return;
         $scope.hist.push(zi);
         var removed;
         while ($scope.hist.length > 20) {
