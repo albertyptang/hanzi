@@ -15,10 +15,6 @@ module.exports = function (grunt) {
           'node_modules/myscript/resources/samples/lib/myscript.js'
         ],
         dest: 'client/dist/lib.js'
-      },
-      ng: {
-        src: ['client/dist/lib.js', 'node_modules/angular/angular.min.js'],
-        dest: 'client/dist/lib.js'
       }
     },
 
@@ -55,7 +51,7 @@ module.exports = function (grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('default', [
-    'cssmin', 'concat:lib', 'uglify', 'concat:ng'
+    'cssmin', 'concat', 'uglify'
   ]);
 
   grunt.registerTask('csswatch', ['watch']);

@@ -6,33 +6,36 @@
   <title>Hanzi by Albert Tang</title>
   <meta name="viewport" content="width=device-width, initial-scale=.7" />
   <link rel="stylesheet" href="dist/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="dist/lib.js"></script>
 </head>
 
-<body ng-controller="zhCtrl">
-  <div class="top">
-    <h1>漢字 Hanzi <span ng-click="add()" id="preview"></span></h1>
-    <div class="buttons" ng-mouseleave="icon()">
-      <img ng-click="add()" ng-mouseover="icon('Search')" src="assets/search.png">
-      <img ng-click="draw=1" ng-mouseover="icon('Draw')" ng-class="{active: draw}" src="assets/draw.png">
-      <img ng-click="draw=0" ng-mouseover="icon('History')" ng-class="{active: !draw}" src="assets/clock.png">
-      <a href="javascript:history.go(0)"><img ng-mouseover="icon('Clear')" src="assets/clear.png"></a>
+<body>
+  <div ng-controller="zhCtrl">
+    <div class="top">
+      <h1>漢字 Hanzi <span ng-click="add()" id="preview"></span></h1>
+      <div class="buttons" ng-mouseleave="icon()">
+        <img ng-click="add()" ng-mouseover="icon('Search')" src="assets/search.png">
+        <img ng-click="draw=1" ng-mouseover="icon('Draw')" ng-class="{active: draw}" src="assets/draw.png">
+        <img ng-click="draw=0" ng-mouseover="icon('History')" ng-class="{active: !draw}" src="assets/clock.png">
+        <a href="javascript:history.go(0)"><img ng-mouseover="icon('Clear')" src="assets/clear.png"></a>
+      </div>
     </div>
-  </div>
-  <div>
-    <p>{{instructions}}</p>
-    <p class="iconDef">{{iconDef}}</p>
-  </div>
-  <canvas ng-show="draw" id="canvas" width="400" height="250"></canvas>
-  <div class="box" ng-hide="draw">
-    <span class="past" ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
-  </div>
-  <a href="https://github.com/albertyptang">
-    <p class="author">Albert Tang</p>
-  </a>
-  <div ng-repeat="definition in def">
-    <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
-      {{definition.definition}}</p>
+    <div>
+      <p>{{instructions}}</p>
+      <p class="iconDef">{{iconDef}}</p>
+    </div>
+    <canvas ng-show="draw" id="canvas" width="400" height="250"></canvas>
+    <div class="box" ng-hide="draw">
+      <span class="past" ng-repeat="(key,val) in hist" ng-click="past(key)"> {{key}} </span>
+    </div>
+    <a href="https://github.com/albertyptang">
+      <p class="author">Albert Tang</p>
+    </a>
+    <div ng-repeat="definition in def">
+      <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
+        {{definition.definition}}</p>
+    </div>
   </div>
 </body>
 <script src="app/zhController.js"></script>
