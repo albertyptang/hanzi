@@ -42,8 +42,7 @@ var characterRecognition = function () {
               return;
             }
             var prev = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
-            var c = prev.charCodeAt(0);
-            if (c > 13311 && c < 40960) preview.innerHTML = prev[0];
+            preview.innerHTML = prev[0];
           }
         );
       }

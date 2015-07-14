@@ -11,7 +11,7 @@
   <script src="app/zhController.js"></script>
 </head>
 
-<body>
+<body class="ng-cloak">
   <div ng-controller="zhCtrl">
     <div class="top">
       <h1>漢字 Hanzi <span ng-click="add()" id="preview"></span></h1>
@@ -34,6 +34,7 @@
       <p class="author">Albert Tang</p>
     </a>
     <div ng-repeat="definition in def">
+      <p>{{definition.warning}}</p>
       <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
         {{definition.definition}}</p>
     </div>

@@ -29,6 +29,13 @@ angular.module('zhzd', [])
   $scope.def = [];
   $scope.add = function () {
     var zi = document.getElementById('preview').innerHTML;
+    var c = zi.charCodeAt(0);
+    if (c < 13312 || c > 40959) {
+      $scope.def = [{
+        warning: 'Sorry, try writing a Chinese character!'
+      }];
+      return;
+    }
     $http.post('/dic', {
       zi: zi
     }).
