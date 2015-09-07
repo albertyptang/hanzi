@@ -8,8 +8,8 @@ var characterRecognition = function () {
   /*
    * Handle MyScript Cloud authentication keys
    */
-  var applicationKey = '36c47743-8473-4c39-b43d-4c8a2350e6a1';
-  var hmacKey = 'bbb5e44d-05f9-47e9-95e3-9436d085249b';
+  var applicationKey = '25c0ce07-6865-4466-a90d-1ed5f2ada4a8';
+  var hmacKey = '16f686c2-132c-48b0-8caf-b8c6c387b2d9';
   /*
    * Declare an instance of MyScriptJS InkManager in order to capture digital ink
    */
