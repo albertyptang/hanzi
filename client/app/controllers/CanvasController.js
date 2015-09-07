@@ -1,6 +1,16 @@
-var characterRecognition = function () {
-  var preview = document.getElementById('preview');
-  var result = document.getElementById('result');
+angular.module('hzzd')
+
+.controller('canvasCtrl', ['$scope', 'router', 'dictionary', '$timeout', function ($scope, router, dictionary, $timeout) {
+  // router
+  $scope.router = router;
+
+  // dictionary
+  $scope.dictionary = dictionary;
+  $scope.changeCharacter = function(character) {
+    $timeout(dictionary.changeCharacter.call(dictionary, character));
+  };
+
+  // draw
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   var pointerId;
@@ -18,6 +28,7 @@ var characterRecognition = function () {
    * Declare an instance of MyScriptJS TextRenderer in order to enable ink rendering
    */
   var textRenderer = new MyScript.TextRenderer();
+
   /*
    * Declare an instance of MyScriptJS Text Recognizer
    */
@@ -29,8 +40,9 @@ var characterRecognition = function () {
 
   function doRecognition() {
       if (inkManager.isEmpty()) {
-        preview.innerHTML = '';
+        $scope.changeCharacter('');
       } else {
+        // $scope.changeCharacter('test');
         var inputUnit = new MyScript.TextInputUnit();
         inputUnit.setComponents(inkManager.getStrokes());
         var units = [inputUnit];
@@ -42,14 +54,14 @@ var characterRecognition = function () {
               return;
             }
             var prev = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
-            preview.innerHTML = prev[0];
+            $scope.changeCharacter(prev[0]);
           }
         );
       }
     }
-    /*
-     * On pointer down: Start ink rendering and ink capture.
-     */
+  /*
+   * On pointer down: Start ink rendering and ink capture.
+   */
   canvas.addEventListener('pointerdown', function (event) {
     if (!pointerId) {
       pointerId = event.pointerId;
@@ -102,6 +114,5 @@ var characterRecognition = function () {
       doRecognition();
     }
   }, false);
-};
 
-characterRecognition();
+}]);

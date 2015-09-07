@@ -18,8 +18,8 @@ app.use(express.static(__dirname+'/client'));
 
 // routing
 app.post('/dic', function (req, res) {
-  var zi = req.body.zi;
-  var def = hanzi.definitionLookup(zi);
+  var character = req.body.character;
+  var def = hanzi.definitionLookup(character);
   res.send(def);
 });
 

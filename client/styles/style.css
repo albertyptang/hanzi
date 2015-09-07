@@ -15,38 +15,54 @@ p {
   margin-bottom: 5px
 }
 
-#preview {
-  color: gray;
+h4 {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-.top {
+.hzzd-menu {
   width: 400px;
-  height: 40px;
+  height: 60px;
   position: relative;
-  margin-bottom: 5px
 }
 
-.iconDef {
-  width: 395px;
-  text-align: right;
+.hzzd-subtitle {
+  margin: 0px;
 }
 
-.buttons {
+#hzzd-preview {
   position: absolute;
   top: 0;
-  right: 0
+  left: 0;
+  font-size: 40px;
+  width: 40px;
+  height: 55px;
+  margin-left: 100px;
 }
 
-img {
+.hzzd-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.hzzd-button {
   opacity: .4;
   width: 40px;
+  float: left;
 }
 
-img:hover {
+.hzzd-button:hover {
   opacity: 1;
 }
 
-.active {
+img {
+  width: 40px;
+}
+
+.hzzd-active {
   opacity: 1;
 }
 
@@ -75,9 +91,9 @@ canvas {
   opacity: 1;
 }
 
-.box {
+.hzzd-history {
   padding: 0 10px;
-  margin-top: 10px;
+  margin-top: 5px;
   width: 370px;
   height: 244px;
   border: 5px solid lavender;

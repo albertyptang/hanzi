@@ -1,44 +1,68 @@
 <!DOCTYPE html>
-<html ng-app="zhzd">
+<html ng-app="hzzd">
 
 <head>
   <meta charset="utf-8" />
-  <title>Hanzi by Albert Tang</title>
+  <title>HZZD by Albert Tang</title>
   <meta name="viewport" content="width=device-width, initial-scale=.7" />
   <link rel="stylesheet" href="dist/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="dist/lib.js"></script>
-  <script src="app/zhController.js"></script>
+  <script src="app/HZZD.js"></script>
+  <script src="app/controllers/MenuController.js"></script>
+  <script src="app/controllers/CanvasController.js"></script>
+  <script src="app/services/RouterService.js"></script>
+  <script src="app/services/DictionaryService.js"></script>
 </head>
 
 <body class="ng-cloak">
-  <div ng-controller="zhCtrl">
-    <div class="top">
-      <h1>漢字 Hanzi <span ng-click="add()" id="preview"></span></h1>
-      <div class="buttons" ng-mouseleave="icon()">
-        <img ng-click="add()" ng-mouseover="icon('Lookup')" src="assets/search.png">
-        <img ng-click="draw=1" ng-mouseover="icon('Draw')" ng-class="{active: draw}" src="assets/draw.png">
-        <img ng-click="draw=0" ng-mouseover="icon('History')" ng-class="{active: !draw}" src="assets/clock.png">
+
+  <div ng-controller="menuCtrl" class="hzzd-menu">
+
+    <h1>HZZD</h1>
+    <p class="hzzd-subtitle">Hanzi Zidian</p>
+
+    <div ng-click="lookupCharacter()" class="hzzd-button" id="hzzd-preview">
+      <div>{{dictionary.character}}</div> 
+    </div>
+
+    <div class="hzzd-buttons">
+      <div ng-click="lookupCharacter()" class="hzzd-button">
+        <img src="assets/search.png">
+        <h4>Lookup</h4>
+      </div>
+      <div ng-click="switchState('draw')" class="hzzd-button" ng-class="{'hzzd-active': router.state == 'draw'}">
+        <img src="assets/draw.png">
+        <h4>Draw</h4>
+      </div>
+      <div ng-click="switchState('history')" class="hzzd-button" ng-class="{'hzzd-active': router.state == 'history'}">
+        <img src="assets/clock.png">
+        <h4>History</h4>
+      </div>
+      <div class="hzzd-button">
         <a href="javascript:history.go(0)"><img ng-mouseover="icon('Clear')" src="assets/clear.png"></a>
+        <h4>Clear</h4>
       </div>
     </div>
-    <div>
-      <p>{{instructions}}</p>
-      <p class="iconDef">{{iconDef}}</p>
-    </div>
-    <canvas ng-show="draw" id="canvas" width="400" height="250"></canvas>
-    <div class="box" ng-hide="draw">
-      <span class="past" ng-repeat="old in hist" ng-click="past(old)"> {{old}} </span>
+
+  </div>
+
+  <div ng-controller="canvasCtrl">
+    <canvas ng-show="router.state == 'draw'" id="canvas" width="400" height="250"></canvas>
+
+    <div class="hzzd-history" ng-show="router.state == 'history'">
+      <span class="past" ng-repeat="old in dictionary.history" ng-click="dictionary.changeCharacter(old)"> {{old}} </span>
     </div>
     <a href="https://github.com/albertyptang">
       <p class="author">Albert Tang</p>
     </a>
-    <div ng-repeat="definition in def">
+    <div ng-repeat="definition in dictionary.definitions">
       <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
         {{definition.definition}}</p>
     </div>
+
   </div>
+
 </body>
-<script src="app/canvas.js"></script>
 
 </html>
