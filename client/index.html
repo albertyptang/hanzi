@@ -64,7 +64,7 @@
     <canvas ng-show="router.state == 'draw'" id="canvas" width="400" height="250"></canvas>
 
     <div class="hzzd-history" ng-show="router.state == 'history'">
-      <span class="hzzd-past" ng-repeat="old in dictionary.history" ng-click="dictionary.changeCharacter(old)"> {{old}} </span>
+      <span class="hzzd-past" ng-repeat="old in dictionary.history" ng-click="dictionary.changeCharacter(old.character)"> {{old.character}} </span>
     </div>
     <p class="author"><a href="https://github.com/albertyptang">Albert Tang</p>
     </a>

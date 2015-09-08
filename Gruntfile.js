@@ -31,6 +31,13 @@ module.exports = function (grunt) {
     },
 
     watch: {
+      hzzd: {
+        files: [
+          'client/app/*.js',
+          'client/app/*/*.js',
+        ],
+        tasks: ['concat', 'uglify:hzzd']
+      },
       css: {
         files: 'client/styles/style.css',
         tasks: ['cssmin']
@@ -51,6 +58,4 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'cssmin', 'concat', 'uglify'
   ]);
-
-  grunt.registerTask('csswatch', ['watch']);
 };

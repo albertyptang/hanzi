@@ -27,7 +27,11 @@ angular.module('hzzd')
     canvas.textRenderer.clear(canvas.context);    
     canvas.textRenderer.drawStrokes(strokes, canvas.context);
     dictionary.memory.pop();
-    dictionary.changeCharacter(dictionary.memory[dictionary.memory.length - 1]);
+    if (dictionary.memory.length === 0) {
+      dictionary.changeCharacter('');
+    } else {
+      dictionary.changeCharacter(dictionary.memory[dictionary.memory.length - 1]);
+    }
   };
 
 }]);

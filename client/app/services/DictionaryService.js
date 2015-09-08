@@ -6,9 +6,20 @@ angular.module('hzzd')
 
   var memory = [];
 
-  for (var character in window.localStorage) {
+  for (var date in localStorage) {
+    var character = localStorage[date];
     if (character.charCodeAt(0) >= 13312 && character.charCodeAt(0) <= 40959) {
-      history.push(character);
+      var entry = {
+        date: date,
+        character: character
+      };
+      history.push(entry);
+      if (history.length > 28) {
+        var removed = history.unshift();
+        localStorage.removeItem(removed.date);
+      }
+    } else {
+      localStorage.removeItem(date);
     }
   }
 
@@ -35,14 +46,23 @@ angular.module('hzzd')
         context.definitions = [];
       } else {
         context.definitions = data;
-        if (localStorage.getItem(character)) return;
-        context.history.push(character);
-        var removed;
-        while (context.history.length > 20) {
-          removed = context.history.pop();
-          localStorage.removeItem(removed);
+
+        for (var date in window.localStorage) {
+          if (character === window.localStorage[date]) {
+            return;
+          }
         }
-        localStorage.setItem(character, 1);
+        date = Date.now();
+        var entry = {
+          date: date,
+          character: character
+        };
+        context.history.push(entry);
+        while (context.history.length > 28) {
+          var removed = context.history.unshift();
+          localStorage.removeItem(removed.date);
+        }
+        localStorage.setItem(date, character);
       }
     }).error(function (data, status, headers, config) {
       console.log('error: ', status);
