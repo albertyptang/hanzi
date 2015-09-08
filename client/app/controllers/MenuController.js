@@ -20,7 +20,6 @@ angular.module('hzzd')
     dictionary.definitions = [];
     canvas.textRenderer.clear(canvas.context);    
     canvas.inkManager.clear();
-    $scope.$apply();
   };
   $scope.undo = function() {
     canvas.inkManager.undo();

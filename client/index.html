@@ -6,14 +6,21 @@
   <title>Hanzi by Albert Tang</title>
   <meta name="viewport" content="width=device-width, initial-scale=.7" />
   <link rel="stylesheet" href="dist/style.css">
+  <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-  <script src="dist/lib.js"></script>
-  <script src="app/HZZD.js"></script>
-  <script src="app/controllers/MenuController.js"></script>
-  <script src="app/controllers/CanvasController.js"></script>
-  <script src="app/services/RouterService.js"></script>
-  <script src="app/services/DictionaryService.js"></script>
-  <script src="app/services/CanvasService.js"></script>
+  <!-- CryptoJS imports -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/x64-core-min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha512-min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/hmac-min.js"></script>
+  <!-- Q import -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/q.js/1.2.1/q.js"></script>
+  <!-- HandJS import -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handjs/1.3.11/hand.min.js"></script>
+  <!-- MyScriptJS import -->
+  <script src="dist/myscript.js"></script>
+  <!-- Application -->
+  <script src="dist/hzzd.js"></script>  
 </head>
 
 <body class="ng-cloak">
@@ -53,6 +60,7 @@
   </div>
 
   <div ng-controller="canvasCtrl">
+
     <canvas ng-show="router.state == 'draw'" id="canvas" width="400" height="250"></canvas>
 
     <div class="hzzd-history" ng-show="router.state == 'history'">

@@ -3,25 +3,23 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
-      lib: {
+      hzzd: {
         src: [
-          'node_modules/jquery/dist/jquery.js',
-          'node_modules/crypto-js/core.js',
-          'node_modules/crypto-js/x64-core.js',
-          'node_modules/crypto-js/sha512.js',
-          'node_modules/crypto-js/hmac.js',
-          'node_modules/q/q.js',
-          'node_modules/handjs/hand.js',
-          'node_modules/myscript/resources/samples/lib/myscript.js'
+          'client/app/*.js',
+          'client/app/*/*.js',
         ],
-        dest: 'client/dist/lib.js'
+        dest: 'client/dist/hzzd.js'
       }
     },
 
     uglify: {
-      dist: {
-        src: 'client/dist/lib.js',
-        dest: 'client/dist/lib.js'
+      myscript: {
+        src: 'node_modules/myscript/resources/samples/lib/myscript.js',
+        dest: 'client/dist/myscript.js'
+      },
+      hzzd: {
+        src: 'client/dist/hzzd.js',
+        dest: 'client/dist/hzzd.js'
       }
     },
 

@@ -1,6 +1,6 @@
 angular.module('hzzd')
 
-.factory('dictionary', function ($http) {
+.factory('dictionary', ['$http', function ($http) {
 
   var history = [];
 
@@ -58,5 +58,5 @@ angular.module('hzzd')
     lookupCharacter: lookupCharacter
   };
 
-});
+}]);
 
