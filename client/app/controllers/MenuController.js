@@ -1,6 +1,6 @@
 angular.module('hzzd')
 
-.controller('menuCtrl', ['$scope', 'router', 'dictionary', '$timeout', function ($scope, router, dictionary, $timeout) {
+.controller('menuCtrl', ['$scope', 'router', 'dictionary', 'canvas', '$timeout', function ($scope, router, dictionary, canvas, $timeout) {
   // router
   $scope.router = router;
   $scope.switchState = function(state) {
@@ -11,6 +11,22 @@ angular.module('hzzd')
   $scope.dictionary = dictionary;
   $scope.lookupCharacter = function() {
     dictionary.lookupCharacter();
+  };
+
+  // canvas
+  $scope.clear = function() {
+    dictionary.changeCharacter('');
+    dictionary.memory = [];
+    canvas.textRenderer.clear(canvas.context);    
+    canvas.inkManager.clear();
+  };
+  $scope.undo = function() {
+    canvas.inkManager.undo();
+    var strokes = canvas.inkManager.getStrokes();
+    canvas.textRenderer.clear(canvas.context);    
+    canvas.textRenderer.drawStrokes(strokes, canvas.context);
+    dictionary.memory.pop();
+    dictionary.changeCharacter(dictionary.memory[dictionary.memory.length - 1]);
   };
 
 }]);

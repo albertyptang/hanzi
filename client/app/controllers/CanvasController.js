@@ -1,6 +1,6 @@
 angular.module('hzzd')
 
-.controller('canvasCtrl', ['$scope', 'router', 'dictionary', '$timeout', function ($scope, router, dictionary, $timeout) {
+.controller('canvasCtrl', ['$scope', 'router', 'dictionary', 'canvas', '$timeout', function ($scope, router, dictionary, canvas, $timeout) {
   // router
   $scope.router = router;
 
@@ -8,92 +8,59 @@ angular.module('hzzd')
   $scope.dictionary = dictionary;
   $scope.changeCharacter = function(character) {
     $timeout(dictionary.changeCharacter.call(dictionary, character));
-  };
+  };  
 
-  // draw
-  var canvas = document.getElementById('canvas');
-  var context = canvas.getContext('2d');
+  // canvas
+  $scope.canvas = canvas.canvas;
+  var context = canvas.context;
   var pointerId;
-  var instanceId;
-  /*
-   * Handle MyScript Cloud authentication keys
-   */
-  var applicationKey = '25c0ce07-6865-4466-a90d-1ed5f2ada4a8';
-  var hmacKey = '16f686c2-132c-48b0-8caf-b8c6c387b2d9';
-  /*
-   * Declare an instance of MyScriptJS InkManager in order to capture digital ink
-   */
-  var inkManager = new MyScript.InkManager();
-  /*
-   * Declare an instance of MyScriptJS TextRenderer in order to enable ink rendering
-   */
-  var textRenderer = new MyScript.TextRenderer();
 
-  /*
-   * Declare an instance of MyScriptJS Text Recognizer
-   */
-  var textRecognizer = new MyScript.TextRecognizer();
-  /*
-   * Set Recognition language (i.e.: "en_US")
-   */
-  textRecognizer.getParameters().setLanguage('zh_TW');
-
-  function doRecognition() {
-      if (inkManager.isEmpty()) {
+  var doRecognition = function () {
+      if (canvas.inkManager.isEmpty()) {
         $scope.changeCharacter('');
       } else {
-        // $scope.changeCharacter('test');
-        var inputUnit = new MyScript.TextInputUnit();
-        inputUnit.setComponents(inkManager.getStrokes());
-        var units = [inputUnit];
-        textRecognizer.doSimpleRecognition(applicationKey, instanceId, units, hmacKey).then(
-          function (data) {
-            if (!instanceId) {
-              instanceId = data.getInstanceId();
-            } else if (instanceId !== data.getInstanceId()) {
-              return;
-            }
-            var prev = data.getTextDocument().getTextSegment().getSelectedCandidate().getLabel();
-            $scope.changeCharacter(prev[0]);
-          }
-        );
+        canvas.doRecognition()
+          .then(function(data){
+            $scope.dictionary.memory.push(data);
+            $scope.changeCharacter(data);
+          });
       }
-    }
+  };
   /*
    * On pointer down: Start ink rendering and ink capture.
    */
-  canvas.addEventListener('pointerdown', function (event) {
+  $scope.canvas.addEventListener('pointerdown', function (event) {
     if (!pointerId) {
       pointerId = event.pointerId;
       event.preventDefault();
       // Start ink rendering
-      textRenderer.drawStart(event.offsetX, event.offsetY);
+      canvas.textRenderer.drawStart(event.offsetX, event.offsetY);
       // Start ink capture
-      inkManager.startInkCapture(event.offsetX, event.offsetY);
+      canvas.inkManager.startInkCapture(event.offsetX, event.offsetY);
     }
   }, false);
   /*
    * On pointer move: Continue ink rendering and ink capture.
    */
-  canvas.addEventListener('pointermove', function (event) {
+  $scope.canvas.addEventListener('pointermove', function (event) {
     if (pointerId === event.pointerId) {
       event.preventDefault();
       // Continue ink rendering
-      textRenderer.drawContinue(event.offsetX, event.offsetY, context);
+      canvas.textRenderer.drawContinue(event.offsetX, event.offsetY, context);
       // Continue ink capture
-      inkManager.continueInkCapture(event.offsetX, event.offsetY);
+      canvas.inkManager.continueInkCapture(event.offsetX, event.offsetY);
     }
   }, false);
   /*
    * On pointer up: Stop ink rendering and ink capture and send recognition request.
    */
-  canvas.addEventListener('pointerup', function (event) {
+  $scope.canvas.addEventListener('pointerup', function (event) {
     if (pointerId === event.pointerId) {
       event.preventDefault();
       // Stop ink rendering
-      textRenderer.drawEnd(event.offsetX, event.offsetY, context);
+      canvas.textRenderer.drawEnd(event.offsetX, event.offsetY, context);
       // Stop ink capture
-      inkManager.endInkCapture();
+      canvas.inkManager.endInkCapture();
       pointerId = undefined;
       // Send recognition request
       doRecognition();
@@ -102,13 +69,13 @@ angular.module('hzzd')
   /*
    * On pointer leave: Continue ink rendering and ink capture.
    */
-  canvas.addEventListener('pointerleave', function (event) {
+  $scope.canvas.addEventListener('pointerleave', function (event) {
     if (pointerId === event.pointerId) {
       event.preventDefault();
       // Stop ink rendering
-      textRenderer.drawEnd(event.offsetX, event.offsetY, context);
+      canvas.textRenderer.drawEnd(event.offsetX, event.offsetY, context);
       // Stop ink capture
-      inkManager.endInkCapture();
+      canvas.inkManager.endInkCapture();
       pointerId = undefined;
       // Send recognition request
       doRecognition();

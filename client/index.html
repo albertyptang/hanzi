@@ -13,6 +13,7 @@
   <script src="app/controllers/CanvasController.js"></script>
   <script src="app/services/RouterService.js"></script>
   <script src="app/services/DictionaryService.js"></script>
+  <script src="app/services/CanvasService.js"></script>
 </head>
 
 <body class="ng-cloak">
@@ -39,9 +40,13 @@
         <img src="assets/clock.png">
         <h4>History</h4>
       </div>
-      <div class="hzzd-button">
-        <a href="javascript:history.go(0)"><img ng-mouseover="icon('Clear')" src="assets/clear.png"></a>
+      <div ng-click="clear()" class="hzzd-button">
+        <img src="assets/clear.png">
         <h4>Clear</h4>
+      </div>
+      <div ng-click="undo()" class="hzzd-button">
+        <img src="assets/undo.png">
+        <h4>Undo</h4>
       </div>
     </div>
 
@@ -51,14 +56,14 @@
     <canvas ng-show="router.state == 'draw'" id="canvas" width="400" height="250"></canvas>
 
     <div class="hzzd-history" ng-show="router.state == 'history'">
-      <span class="past" ng-repeat="old in dictionary.history" ng-click="dictionary.changeCharacter(old)"> {{old}} </span>
+      <span class="hzzd-past" ng-repeat="old in dictionary.history" ng-click="dictionary.changeCharacter(old)"> {{old}} </span>
     </div>
     <a href="https://github.com/albertyptang">
       <p class="author">Albert Tang</p>
     </a>
     <div ng-repeat="definition in dictionary.definitions">
-      <p><span class="character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
-        {{definition.definition}}</p>
+      <p><span class="hzzd-definition-character">{{definition.traditional}}</span> {{definition.pinyin}}</br>
+      {{definition.definition}}</p>
     </div>
 
   </div>

@@ -4,6 +4,8 @@ angular.module('hzzd')
 
   var history = [];
 
+  var memory = [];
+
   for (var character in window.localStorage) {
     if (character.charCodeAt(0) >= 13312 && character.charCodeAt(0) <= 40959) {
       history.push(character);
@@ -51,6 +53,7 @@ angular.module('hzzd')
     character: '',
     definitions: [],
     history: history,
+    memory: memory,
     changeCharacter: changeCharacter,
     lookupCharacter: lookupCharacter
   };

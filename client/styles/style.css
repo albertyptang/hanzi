@@ -37,8 +37,9 @@ h4 {
   top: 0;
   left: 0;
   font-size: 40px;
+  font-weight: bold;
   width: 40px;
-  height: 55px;
+  height: 40px;
   margin-left: 100px;
 }
 
@@ -56,6 +57,7 @@ h4 {
 
 .hzzd-button:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 img {
@@ -72,23 +74,13 @@ canvas {
   border: none;
 }
 
-.author {
-  position:absolute;
-  width: 395px;
-  text-align: right;
+.hzzd-past {
   opacity: .5
 }
 
-.author:hover{
+.hzzd-past:hover {
   opacity: 1;
-}
-
-.past {
-  opacity: .5
-}
-
-.past:hover {
-  opacity: 1;
+  cursor: pointer;
 }
 
 .hzzd-history {
@@ -101,6 +93,17 @@ canvas {
   font-weight: bold;
 }
 
-.character {
+.hzzd-definition-character {
   font-size: 30px;
+}
+
+.author {
+  position:absolute;
+  width: 395px;
+  text-align: right;
+  opacity: .5
+}
+
+.author:hover{
+  opacity: 1;
 }
