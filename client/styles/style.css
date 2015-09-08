@@ -5,7 +5,6 @@ body {
 }
 
 h1 {
-  margin-bottom: 5px;
   display: inline
 }
 
@@ -33,7 +32,7 @@ a {
 }
 
 .hzzd-subtitle {
-  margin: 0px;
+  margin-top: -5px;
 }
 
 #hzzd-preview {
