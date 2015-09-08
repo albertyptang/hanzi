@@ -58,8 +58,7 @@
     <div class="hzzd-history" ng-show="router.state == 'history'">
       <span class="hzzd-past" ng-repeat="old in dictionary.history" ng-click="dictionary.changeCharacter(old)"> {{old}} </span>
     </div>
-    <a href="https://github.com/albertyptang">
-      <p class="author">Albert Tang</p>
+    <p class="author"><a href="https://github.com/albertyptang">Albert Tang</p>
     </a>
     <div ng-repeat="definition in dictionary.definitions">
       <p><span class="hzzd-definition-character">{{definition.traditional}}</span> {{definition.pinyin}}</br>

@@ -17,8 +17,10 @@ angular.module('hzzd')
   $scope.clear = function() {
     dictionary.changeCharacter('');
     dictionary.memory = [];
+    dictionary.definitions = [];
     canvas.textRenderer.clear(canvas.context);    
     canvas.inkManager.clear();
+    $scope.$apply();
   };
   $scope.undo = function() {
     canvas.inkManager.undo();
